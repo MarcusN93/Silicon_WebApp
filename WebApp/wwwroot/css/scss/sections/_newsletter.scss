@@ -1,0 +1,133 @@
+#newsletter {
+    background-color: $gray-100;
+    padding-top: 70px;
+    padding-bottom: 70px;
+
+    .container {
+        max-width: 900px;
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+
+            img {
+                margin-left: 25px;
+            }
+        }
+
+        .content {
+            .checkboxes {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-areas:
+                    "title title" "checkbox1 checkbox2" "checkbox3 checkbox4" "checkbox5 checkbox6";
+
+                @include lg {
+                    grid-template-columns: 1fr 1fr 1fr 1fr;
+                    grid-template-areas:
+                        "title checkbox1 checkbox2 checkbox3" "title checkbox4 checkbox5 checkbox6";
+                }
+
+                .title {
+                    grid-area: title;
+                    width: 50%;
+                }
+
+                .form-check {
+                    .form-check-input {
+                        border: 2px solid $gray-500;
+
+                        &:checked {
+                            background-color: $theme;
+                            border-color: $theme;
+                        }
+                    }
+                }
+
+                #checkbox1 {
+                    grid-area: checkbox1;
+                }
+
+                #checkbox2 {
+                    grid-area: checkbox2;
+                }
+
+                #checkbox3 {
+                    grid-area: checkbox3;
+                }
+
+                #checkbox4 {
+                    grid-area: checkbox4;
+                }
+
+                #checkbox5 {
+                    grid-area: checkbox5;
+                }
+
+                #checkbox6 {
+                    grid-area: checkbox6;
+                }
+            }
+
+            .form {
+                display: flex;
+                gap: 1rem;
+
+                p {
+                    color: $gray-600;
+
+                    a {
+                        text-decoration: underline;
+                    }
+
+                    .blue {
+                        color: $theme;
+                    }
+                }
+
+                .input-container {
+                    width: 100%;
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+
+                    span.fa-envelope {
+                        position: absolute;
+                        margin-left: 10px;
+                        font-weight: 300;
+                    }
+
+                    input {
+                        font-size: 16px;
+                        padding: 10px 30px;
+                        color: $gray-700;
+                        text-decoration: none;
+                        outline: none;
+                        width: 100%;
+                        border-radius: 10px;
+                        border: 1px solid $gray-400;
+                        background-color: #FFFFFF;
+                        text-decoration: none;
+                        outline: none;
+
+                        &.input-validation-error {
+                            position: relative;
+                            border: 0.063rem solid $danger !important;
+                            color: $danger;
+
+                            &::placeholder {
+                                color: $danger;
+                            }
+                        }
+
+                        &:focus {
+                            outline: none;
+                            border: 0.063rem solid $gray-600;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

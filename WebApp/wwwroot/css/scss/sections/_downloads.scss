@@ -1,0 +1,53 @@
+#downloads {
+    background-color: $gray-100;
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+    .container {
+        display: block;
+        gap: 200px;
+
+        @include xxl {
+            display: flex;
+        }
+
+        .screen-img {
+            width: 100%;
+
+            @include lg {
+                margin-left: 100px;
+                width: 50%;
+            }
+        }
+
+        .content {
+            margin-top: 6rem;
+
+            .section-title {
+                max-width: 80%;
+            }
+
+            .rating-box {
+                max-width: 80%;
+
+                .stars {
+                    color: $warning;
+                }
+
+                p {
+                    margin-bottom: 0px;
+                }
+
+                .button-box {
+                    display: flex;
+                    align-items: start;
+                    justify-content: space-between;
+
+                    img {
+                        max-width: 45%;
+                    }
+                }
+            }
+        }
+    }
+}

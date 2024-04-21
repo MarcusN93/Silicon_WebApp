@@ -1,0 +1,33 @@
+#worktools {
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    .container {
+
+        .section-title {
+            text-align: center;
+
+            p {
+            }
+        }
+
+        .section-content {
+            display: grid;
+            gap: 50px;
+            grid-template-columns: 1fr 1fr;
+            margin-top: 50px;
+
+            @include xl {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+
+            .content-box {
+                width: 80%;
+
+                img {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+}

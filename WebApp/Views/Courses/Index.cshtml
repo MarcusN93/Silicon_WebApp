@@ -1,0 +1,98 @@
+﻿@model CourseIndexViewModel
+@{
+	ViewData["Title"] = "Courses";
+}
+
+<section id="courses">
+	<div class="container">
+		<div>
+			<ul class="breadcrumbs">
+				<li class="fa-regular fa-house"></li>
+				<li class="breadcrumb-link"><a asp-action="Home" asp-controller="Default">Home</a></li>
+				<li class="fa-solid fa-chevrons-right"></li>
+				<li class="breadcrumb-link"><a href="#"></a>Courses</li>
+			</ul>
+		</div>
+		<div class="section-title">
+			<h1>Courses</h1>
+			<form id="form-filters">
+				<div class="dropdown">
+					<button class="dropbtn">All Categories<i class="fa-sharp fa-regular fa-chevron-down"></i></button>
+				</div>
+				<div class="search">
+					<input id="searchQuery" name="searchQuery" placeholder="Search courses" />
+					<span><i class="fa-sharp fa-solid fa-magnifying-glass"></i></span>
+				</div>
+			</form>
+		</div>
+		
+		<div class="content">
+			@if (Model.Courses != null)
+			{
+				@foreach(var course in Model.Courses)
+				{
+					<a class="course-card" asp-action="Details" asp-controller="Courses" asp-route-id="@course.Id">
+						<div class="course-card__image">
+							@if (course.IsBestseller)
+							{
+								<div class="best-seller">
+									<p>Best seller</p>
+								</div>
+							}
+							<div class="bookmark">
+								<i class="fa-regular fa-bookmark"></i>
+							</div>
+							<img src="~/images/courses/@course.Image" alt="@course.Title" />
+						</div>
+
+						<div class="course-card__body">
+							<h2 class="h5">@course.Title</h2>
+							<p class="text-s">By @course.Author</p>
+							<div class="price">
+								@if (!string.IsNullOrEmpty(course.DiscountPrice))
+								{
+									
+									<p class="price-after">@course.DiscountPrice<span class="price-before">@course.Price</span></p>
+								}
+								<div class="price @(!string.IsNullOrEmpty(course.DiscountPrice)? "discount-enabled" : "")">@course.Price</div>
+							</div>
+							<div class="divider"></div>
+						</div>
+						<div class="course-card__footer text-s">
+							<div class="hours">
+								<i class="fa-regular fa-clock"></i> @course.Hours hours
+							</div>
+							<div class="likes">
+								<i class="fa-regular fa-thumbs-up"></i> @course.LikesInPercent (@course.LikesInNumbers)
+							</div>
+						</div>
+					</a>
+				}
+			}
+		</div>
+		<div class="pagination">
+			<ul>
+				<li><a href="#" class="prev"><i class="fa-solid fa-angle-left"></i></a></li>
+				<li><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#" class="next"><i class="fa-solid fa-angle-right"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</section>
+
+<section id="get-started">
+	<div class="container">
+		<div class="content">
+			<p>Ready to get started?</p>
+			<h1>Take Your <span class="blue">Skills</span> to the Next Level</h1>
+			<a class="btn-theme" href="">Work With Us</a>
+		</div>
+		<div>
+			<img src="~/images/other/courses-illustration.svg" />
+		</div>
+	</div>
+
+</section>

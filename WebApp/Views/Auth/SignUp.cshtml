@@ -1,0 +1,56 @@
+﻿@model SignUpViewModel
+@{
+    ViewData["Title"] = "Sign Up";
+}
+
+<section id="signup">
+    <div class="container">
+        @if (!string.IsNullOrEmpty(ViewData["StatusMessage"]?.ToString()))
+        {
+            <div class="alert alert-danger">
+                @ViewData["StatusMessage"]
+            </div>
+        }
+
+        <div class="section-title">
+            <h1>Create Account</h1>
+            <p>Already have an account? <a asp-action="SignIn" asp-controller="Auth">Sign in here</a></p>
+        </div>
+
+        <form method="post" asp-action="SignUp" asp-controller="Auth" novalidate class="form">
+            <div id="form-firstname" class="input-group first-name">
+                <label asp-for="FirstName"></label>
+                <span asp-validation-for="FirstName"></span>
+                <input asp-for="FirstName" />
+            </div>
+            <div id="form-lastname" class="input-group last-name">
+                <label asp-for="LastName"></label>
+                <span asp-validation-for="LastName"></span>
+                <input asp-for="LastName" />
+            </div>
+            <div id="form-email" class="input-group email">
+                <label asp-for="Email"></label>
+                <span asp-validation-for="Email"></span>
+                <input asp-for="Email" />
+            </div>
+            <div id="form-password" class="input-group password">
+                <label asp-for="Password"></label>
+                <span asp-validation-for="Password"></span>
+                <input asp-for="Password" />
+            </div>
+            <div id="form-confirmpassword" class="input-group confirm-password">
+                <label asp-for="ConfirmPassword"></label>
+                <span asp-validation-for="ConfirmPassword"></span>
+                <input asp-for="ConfirmPassword"/>
+            </div>
+            <div id="form-checkbox" class="checkbox-group box">
+                <input asp-for="TermsAndConditions" />
+                <span asp-validation-for="TermsAndConditions"></span>
+                <label asp-for="TermsAndConditions"></label>
+            </div>
+            <button type="submit" class="btn btn-theme">Sign up</button>
+        </form>
+    </div>
+</section>
+
+@await Html.PartialAsync("_ValidationScriptPartial")

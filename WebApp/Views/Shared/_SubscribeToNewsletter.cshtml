@@ -1,0 +1,58 @@
+﻿@model SubscribeViewModel
+
+<section id="newsletter">
+	<div class="container">
+		<div class="section-title">
+			<h2>Don't Want to Miss Anything</h2>
+			<img src="~/images/icons/swirl-arrow-icon.svg" alt="swirl arrow" />
+		</div>
+		<form class="content" method="post" asp-action="Subscribe" asp-controller="Default">
+			<div class="checkboxes">
+				<div class="title">
+					<h5>Sign up for Newsletters</h5>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" asp-for="DailyNewsletter" />
+					<label class="form-check-label" asp-for="DailyNewsletter"></label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" asp-for="AdvertisingUpdates" />
+					<label class="form-check-label" asp-for="AdvertisingUpdates"></label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" asp-for="WeekinReview" />
+					<label class="form-check-label" asp-for="WeekinReview"></label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" asp-for="EventUpdates" />
+					<label class="form-check-label" asp-for="EventUpdates"></label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" asp-for="StartupsWeekly" />
+					<label class="form-check-label" asp-for="StartupsWeekly"></label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" asp-for="Podcasts" />
+					<label class="form-check-label" asp-for="Podcasts"></label>
+				</div>
+			</div>
+			<div class="form">
+				<div class="input-container">
+					<span class="fa-regular fa-envelope"></span>
+					<input asp-for="Email" />
+				</div>
+				<button type="submit" class="btn btn-theme">Subscribe*</button>
+			</div>
+			@if (!string.IsNullOrEmpty(TempData["StatusMessage"]?.ToString()))
+			{
+				<span class="status-message">@TempData["StatusMessage"]</span>
+			}
+			else
+			{
+				<span class="status-message">* Yes, I agree to the terms and privacy policy.</span>
+			}
+		</form>
+	</div>
+</section>
+
+@await Html.PartialAsync("_ValidationScriptPartial")
